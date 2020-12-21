@@ -21,6 +21,17 @@ async function part1(passwordRows: Array<passwordRow>){
     console.log(validPasswords.length);
 }
 
+async function part2(passwordRows: Array<passwordRow>){
+    const validPasswords: Array<passwordRow> = [];
+    for (let i=0; i<passwordRows.length; ++i){
+        const v = passwordRows[i];
+        if ((v.password[v.min-1] == v.char && v.password[v.max-1] != v.char) || 
+        (v.password[v.min-1] != v.char && v.password[v.max-1] == v.char))
+            validPasswords.push(v);
+    }
+    console.log(validPasswords.length);
+}
+
 export async function initDay2(inputStream: string){
     const inputStreamSplitted = inputStream.trim().split("\n");
     const inputData: Array<passwordRow> = [];
@@ -35,4 +46,5 @@ export async function initDay2(inputStream: string){
         inputData.push(data);
     }
     await part1(inputData);
+    await part2(inputData);
 }
