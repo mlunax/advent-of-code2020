@@ -1,4 +1,8 @@
-import { initDay1, initDay1a } from './day1/day1.ts';
+// day1 you have to pass path to input file
+// every next day you have to pass file as input stream
 
-await initDay1(Deno.args[0]);
-await initDay1a(Deno.args[0]);
+import { initDay2 } from './day2/day2.ts';
+
+const stdin = new TextDecoder().decode(await Deno.readAll(Deno.stdin));
+
+initDay2(stdin);
