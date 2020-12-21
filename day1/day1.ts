@@ -21,12 +21,35 @@ async function part2(inputData: Array<number>){
     console.log(flag);
 }
 
-async function main() {
-    const inputStream = await Deno.readTextFile(await Deno.realPath(Deno.args[0]));
+async function part1a(a: Array<number>){
+    for (let i=0; i<a.length; ++i){
+        for (let j=0; j<a.length; ++j){
+            if (a[i] + a[j]==2020) return getFlag([a[i], a[j]]);
+        }
+    }
+}
+
+async function part2a(a: Array<number>){
+    for (let i=0; i<a.length; ++i){
+        for (let j=0; j<a.length; ++j){
+            for (let k=0; k<a.length; ++k){
+            if (a[i] + a[j] + a[k] == 2020) return getFlag([a[i], a[j], a[k]]);
+
+            }
+        }
+    }
+}
+
+export async function initDay1(filename: string) {
+    const inputStream = await Deno.readTextFile(await Deno.realPath(filename));
     const inputData: Array<number> = inputStream.trim().split("\n").map((v) => parseInt(v, 10));
     await part1(inputData);   
     await part2(inputData);
 }
 
-main();
-
+export async function initDay1a(filename: string) {
+    const inputStream = await Deno.readTextFile(await Deno.realPath(filename));
+    const inputData: Array<number> = inputStream.trim().split("\n").map((v) => parseInt(v, 10));
+    console.log(await part1a(inputData));   
+    console.log(await part2a(inputData)); 
+}
