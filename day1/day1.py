@@ -13,7 +13,8 @@ def part2(data):
                     return i * j * k
 
 
-def day1(data: str, printable: bool = 1):
+def day1(data, printable: bool = 1):
+    data = list(map(lambda x: int(x), data))
     p1, p2 = part1(data), part2(data)
     if printable:
         print(p1, p2)

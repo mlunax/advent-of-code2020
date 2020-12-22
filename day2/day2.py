@@ -34,7 +34,7 @@ def part2(passwordRows):
     return v
 
 
-def day2(data: str, printable: bool = 1):
+def day2(data, printable: bool = 1):
     passwordRows = []
     for i in data:
         passwordRows.append(PasswordRow(i))
